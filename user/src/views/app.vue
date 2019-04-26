@@ -1,52 +1,34 @@
 <template>
-  <div id="app">
-    <router-view></router-view>
-  </div>
+    <div id="app">
+        <router-view></router-view>
+    </div>
 </template>
 
 <script>
-export default {
-  mounted() {
-    //添加设备接口
-    // this.$post("/appliance/add", {
-    //   name: "哈",
-    //   depict: "哈哈哈哈",
-    //   alertvalue: 95,
-    // }).then(res => {
-    //   console.log(res);
-    // });
+    export default {
+        name: "app",
+        created() {
+            //在页面加载时读取sessionStorage里的状态信息
+            // if (sessionStorage.length) {
+            //     this.$store.state.token = sessionStorage.getItem("token");
+            // }
 
-    //修改设备信息接口
-    // this.$post("/appliance/change", {
-    //   id:'7f7d5590',
-    //   name: "哈哈哈",
-    //   depict: "哈哈哈哈哈哈",
-    //   alertvalue: 95,
-    //   startvalue: 13
-    // }).then(res => {
-    //   console.log(res);
-    // });
-
-    //删除设备接口
-    // this.$post("/appliance/delete",{
-    //   id:"7cc99cb0"
-    // })
-    // .then(res => {
-    //   console.log(res);
-    // });
-
-
-    //检测设备接口
-    this.$post("/appliance/check", {
-      id:'8c1aeb50',
-    }).then(res => {
-      console.log(res);
-    });
-  }
-};
+            //在页面刷新时将vuex里的信息保存到sessionStorage里
+            // window.addEventListener("beforeunload", () => {
+            //     sessionStorage.setItem("token", this.$store.state.token);
+            // })
+        }
+    }
 </script>
 
-<style>
+<style scoped>
+    #app {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        font-family: 'Avenir', Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        color: #2c3e50;
+    }
 </style>
-
-

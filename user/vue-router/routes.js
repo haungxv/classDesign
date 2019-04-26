@@ -1,10 +1,10 @@
-import sign from '../src/views/sign.vue'
-import user from '../src/views/user.vue'
+import Sign from '../src/views/sign.vue';
+import Manager from '../src/views/manager.vue';
 
-import appliance from '../src/components/appliance.vue'
-import applianceDetail from '../src/components/applianceDetail.vue'
-import changeMessage from '../src/components/changeMessage.vue'
-import managerUser from '../src/components/managerUser.vue'
+const getAppliance = () => import('../src/views/getAppliance.vue');
+const addAppliance = () => import('../src/views/addAppliance.vue');
+const managerUser = () => import('../src/views/manageUser.vue');
+const changeMsg = () => import('../src/views/changeMsg.vue');
 
 export default [
     {
@@ -13,29 +13,32 @@ export default [
     },
     {
         path: '/sign',
-        component: sign
+        component: Sign
     },
     {
-        path: '/user',
-        component: user,
+        path: '/manager',
+        component: Manager,
         children: [
             {
                 path: '/',
-                component: appliance
+                component: getAppliance
             },
             {
-                path: 'appliance',
-                component: appliance
+                path: 'getAppliance',
+                component: getAppliance
             },
             {
-                path: 'changeMessage',
-                component: changeMessage
+                path: 'addAppliance',
+                component: addAppliance
             },
             {
                 path: 'managerUser',
                 component: managerUser
-            }
+            },
+            {
+                path: 'changeMsg',
+                component: changeMsg
+            },
         ]
     },
 ]
-

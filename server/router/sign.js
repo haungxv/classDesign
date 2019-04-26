@@ -46,6 +46,7 @@ router.prefix('/sign')
 router.post('/login', async (ctx, next) => {
     let email = ctx.request.body.email;
     let pass = ctx.request.body.pass;
+    console.log(`ctx.session.user:${ctx.session.user}`)
     let back = {};
     let mysqlData = await user.findOne({
         where: {
@@ -58,6 +59,8 @@ router.post('/login', async (ctx, next) => {
     } else {
         let a = mysqlData.dataValues;
         if (a.pass === pass) {
+            ctx.session.user = email;
+            console.log(`ctx.session.user:${ctx.session.user}`)
             back.code = 0;
             back.msg = "登陆成功"
         } else {

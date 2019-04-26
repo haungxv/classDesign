@@ -1,10 +1,8 @@
-//封装常用方法
+//封装axios
 
 import axios from 'axios';
-
 // axios.defaults.timeout = 5000;
-axios.defaults.baseURL = 'http://localhost:3000';
-
+axios.defaults.baseURL = 'http://120.79.137.221:801';
 
 //封装get方法
 export function get(url, params = {}) {
@@ -48,7 +46,7 @@ export function put(url, data = {}) {
 }
 
 //封装delete请求
-export function deleteDate(url){
+export function deleteDate(url) {
     return new Promise((resolve, reject) => {
         axios.delete(url)
             .then(response => {
